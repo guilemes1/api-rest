@@ -1,5 +1,6 @@
 package med.voll.api.controller;
 
+import jakarta.transaction.Transactional;
 import med.voll.api.endereco.Endereco;
 import med.voll.api.medico.DadosCadastroMedico;
 import med.voll.api.medico.Medico;
@@ -17,6 +18,7 @@ public class MedicoController {
     @Autowired
     private MedicoRepository repository;
     @PostMapping
+    @Transactional     //Anotação para indicar uma transação ativa com o banco de dados
     public void cadastrar(@RequestBody DadosCadastroMedico dados){ //RequestBody é uma notação que serve para informar o spring que o parametro do método é para pegar do corpo da requisição feita
         repository.save(new Medico(dados));
     }
