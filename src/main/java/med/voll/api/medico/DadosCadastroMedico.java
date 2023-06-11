@@ -13,6 +13,9 @@ public record DadosCadastroMedico(
         @NotBlank
         @Email
         String email,
+
+        @NotBlank
+        String telefone,
         @NotBlank
         @Pattern(regexp = "\\d{4,6}")       //Anotação de Validação para dizer que o campo crm possui um numero padrão de 4 a 6 digitos
         String crm,
