@@ -1,0 +1,29 @@
+package med.voll.api.domain.consulta;
+
+import med.voll.api.domain.medico.MedicoRepository;
+import med.voll.api.domain.paciente.PacienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service //A classe service executa regras de negócios e validações da aplicação
+public class AgendaDeConsultas {
+
+    @Autowired
+    private ConsultaRepository consultaRepository;
+
+    @Autowired
+    private MedicoRepository medicoRepository;
+
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
+    public void agendar(DadosAgendamentoConsulta dados) {
+
+        //... Inserir as regras de negócio / validações a serem realizadas
+
+        var medico = medicoRepository.findById(dados.idMedico()).get();
+        var paciente = pacienteRepository.findById(dados.idPaciente()).get();
+        var consulta = new Consulta(null, medico, paciente, dados.data());
+        consultaRepository.save(consulta);
+    }
+}
