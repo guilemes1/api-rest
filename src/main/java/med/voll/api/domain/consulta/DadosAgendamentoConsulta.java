@@ -15,7 +15,7 @@ public record DadosAgendamentoConsulta(
 
         @NotNull
         @Future //Validação para que só sejam inseridas datas do futuro
-        @JsonFormat(pattern = "dd/MM/yyyy HH:00:00")
+        //@JsonFormat(pattern = "dd/MM/yyyy HH:00:00")
         LocalDateTime data,
 
         Especialidade especialidade )// Inserido para casos em que o médico não é informado, porem escolhe-se uma especialidade
